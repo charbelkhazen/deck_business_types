@@ -8,6 +8,7 @@ import json
 import pandas as pd
 import plotly.express as px
 from dash import Dash, html, dcc, Input, Output
+import os
 
 # Load your data
 last_df = pd.read_csv('last_df.csv')  # Ensure this file is correctly formatted and contains 'category_level_3'
@@ -95,7 +96,8 @@ def display_text(clickData):
         return html.Div(children, style={'lineHeight': '1.6'})
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 8050)))
+
 
 
 # In[ ]:
